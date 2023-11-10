@@ -4,29 +4,40 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { ButtonGroup } from '@mui/material';
+import { Product } from '../assets/productsList';
 
-export default function MediaCard(props: { img: string }) {
-  const { img } = props;
-
+export default function MediaCard(props: { product: Product, i: number }) {
+  const { name, img, count, price } = props.product;
+  // сделать onclick и изменение состояния через immutable helper
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
         image={img}
-        title="green iguana"
+        title="Car"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {count > 0 ? 'Available' : 'Not available'}
+        </Typography>
+        <Typography variant="body2">
+          {price}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <ButtonGroup
+          disableElevation
+          variant="contained"
+          aria-label="Disabled elevation buttons"
+        >
+          <Button>+</Button>
+          <Button>-</Button>
+        </ButtonGroup>
+        <Button>5</Button>
       </CardActions>
     </Card>
   );

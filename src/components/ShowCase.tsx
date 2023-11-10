@@ -8,9 +8,9 @@ function ShowCase(props: { products: Product[] }) {
   return (
     <Container maxWidth="lg">
       <Grid container rowSpacing={5} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        {products.map((product: Product) => (
+        {products.map((product: Product, i: number) => (
           <Grid item xs={12} sm={6} md={3}>
-            <MediaCard img={product.img}></MediaCard>
+            <MediaCard product={product} i={i}></MediaCard>
           </Grid>
         ))}
       </Grid>
