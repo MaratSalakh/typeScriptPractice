@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export type Product = {
+  id: string,
   count: number,
   price: number,
   img: string,
