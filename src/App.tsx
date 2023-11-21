@@ -1,16 +1,14 @@
-import productsList from './assets/productsList';
-import { useState } from 'react';
+// import { useState } from 'react'
 import AppBarMy from './components/NavBar'
-import ShowCase from './components/ShowCase';
-// import { Product } from './assets/productsList';
+import ShowCase from './components/ShowCase'
 
 const App = () => {
-  const [products, setProducts] = useState(productsList);
+  // const [products, setProducts] = useState(productsList);
 
   return (
     <>
       <AppBarMy></AppBarMy>
-      <ShowCase products={products} setProducts={setProducts}></ShowCase>
+      <ShowCase></ShowCase>
     </>
   );
 };

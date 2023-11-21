@@ -5,11 +5,13 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { ButtonGroup } from '@mui/material';
-import { Product } from '../assets/productsList';
+import { Product } from '../slices/productsSlice';
+import { useAppDispatch } from '../slices/hooks';
+import { countPlus, countMinus } from '../slices/productsSlice';
 
-export default function MediaCard(props: { product: Product, i: number }) {
-  const { name, img, count, price } = props.product;
-  // сделать onclick и изменение состояния через immutable helper
+export default function MediaCard(props: { product: Product }) {
+  const dispatch = useAppDispatch();
+  const { id, count, price, img, name } = props.product;
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -21,9 +23,6 @@ export default function MediaCard(props: { product: Product, i: number }) {
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {count > 0 ? 'Available' : 'Not available'}
-        </Typography>
         <Typography variant="body2">
           {price}
         </Typography>
@@ -34,10 +33,10 @@ export default function MediaCard(props: { product: Product, i: number }) {
           variant="contained"
           aria-label="Disabled elevation buttons"
         >
-          <Button>+</Button>
-          <Button>-</Button>
+          <Button onClick={() => dispatch(countPlus(id))}>+</Button>
+          <Button onClick={() => dispatch(countMinus(id))}>-</Button>
         </ButtonGroup>
-        <Button>5</Button>
+        <Button>{count}</Button>
       </CardActions>
     </Card>
   );

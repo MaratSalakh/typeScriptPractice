@@ -6,9 +6,16 @@ export type Product = {
   price: number,
   img: string,
   name: string,
-};
+}
 
-const initialState = {
+interface ProductsSliceState {
+  entities: {
+    [id: string]: Product;
+  };
+  ids: string[];
+}
+
+const initialState: ProductsSliceState = {
   entities: {
     car1: { id: 'car1', count: 0, price: 500, img: './src/assets/1.png', name: 'Car One', },
     car2: { id: 'car2', count: 0, price: 500, img: './src/assets/1.png', name: 'Car Two', },
@@ -32,15 +39,13 @@ const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    countPlus(state, action) {
-      const { productId } = action.payload;
-
-      state.entities[productId].count += 1;
+    countPlus: (state, action) => {
+      state.entities[action.payload].count += 1;
     },
-    countMinus(state, action) {
-      const { productId } = action.payload;
-
-      state.entities[productId].count -= 1;
+    countMinus: (state, action) => {
+      if (state.entities[action.payload].count > 0) {
+        state.entities[action.payload].count -= 1;
+      }
     },
   }
 });
