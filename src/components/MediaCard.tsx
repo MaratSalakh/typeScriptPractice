@@ -37,6 +37,7 @@ export default function MediaCard(props: { product: Product }) {
           <Button onClick={() => dispatch(countMinus(id))}>-</Button>
         </ButtonGroup>
         <Button>{count}</Button>
+        <Button>{count === 0 ? '' : count * price}</Button>
       </CardActions>
     </Card>
   );
