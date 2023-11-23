@@ -1,6 +1,7 @@
-import AppBarMy from './components/NavBar'
-import ShowCase from './components/ShowCase'
+import MainPage from './pages/MainPage';
+import Cart from './pages/Cart';
 import { createTheme, ThemeProvider } from '@mui/material';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const theme = createTheme({
   palette: {
@@ -17,8 +18,12 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <AppBarMy></AppBarMy>
-      <ShowCase></ShowCase>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<MainPage />}></Route>
+          <Route path='cart' element={<Cart />}></Route>
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };
