@@ -4,10 +4,10 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { ButtonGroup, Link } from '@mui/material';
+import { ButtonGroup } from '@mui/material';
 import { Product } from '../slices/productsSlice';
 import { useAppDispatch } from '../slices/hooks';
-import { countPlus, countMinus } from '../slices/productsSlice';
+import { countPlus, countMinus, resetCount } from '../slices/productsSlice';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function CartMediaCard(props: { product: Product }) {
@@ -39,7 +39,7 @@ export default function CartMediaCard(props: { product: Product }) {
         </ButtonGroup>
         <Button>{count}</Button>
         <Button>{count === 0 ? '' : count * price}</Button>
-        <Link><DeleteIcon></DeleteIcon></Link>
+        <DeleteIcon onClick={() => dispatch(resetCount(id))}></DeleteIcon>
       </CardActions>
     </Card>
   );

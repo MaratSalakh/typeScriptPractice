@@ -47,8 +47,11 @@ const productsSlice = createSlice({
         state.entities[action.payload].count -= 1;
       }
     },
+    resetCount: (state, action) => {
+      state.entities[action.payload].count = 0;
+    },
   }
 });
 
-export const { countPlus, countMinus } = productsSlice.actions;
+export const { countPlus, countMinus, resetCount } = productsSlice.actions;
 export default productsSlice.reducer;

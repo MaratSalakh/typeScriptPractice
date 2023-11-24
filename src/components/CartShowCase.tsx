@@ -2,7 +2,7 @@ import { Container, Grid } from "@mui/material"
 import { useAppSelector } from "../slices/hooks";
 import { Product } from "../slices/productsSlice";
 
-const CartShowCase = (props: { MediaCard: (props: { product: Product }) => JSX.Element }) => {
+const CartShowCase = (props: { MediaCard: (props: { product: Product }) => JSX.Element | null }) => {
   const { MediaCard } = props;
 
   const ids = useAppSelector((state) => state.products.ids);
