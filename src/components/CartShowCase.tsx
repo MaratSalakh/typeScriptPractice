@@ -2,7 +2,7 @@ import { Container, Grid } from "@mui/material"
 import { useAppSelector } from "../slices/hooks";
 import { Product } from "../slices/productsSlice";
 
-const ShowCase = (props: { MediaCard: (props: { product: Product }) => JSX.Element }) => {
+const CartShowCase = (props: { MediaCard: (props: { product: Product }) => JSX.Element }) => {
   const { MediaCard } = props;
 
   const ids = useAppSelector((state) => state.products.ids);
@@ -15,13 +15,13 @@ const ShowCase = (props: { MediaCard: (props: { product: Product }) => JSX.Eleme
           const product = entities[id];
           return (
             <Grid item key={id} xs={12} sm={6} md={3}>
-              {MediaCard({ product })}
+              {product.count === 0 ? null : MediaCard({ product })}
             </Grid>
           )
         })}
       </Grid>
-    </Container>
+    </Container >
   );
 }
 
-export default ShowCase;
+export default CartShowCase;
