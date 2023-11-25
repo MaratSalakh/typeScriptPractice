@@ -2,6 +2,7 @@ import MainPage from './pages/MainPage';
 import Cart from './pages/Cart';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ShowCasePage from './pages/ShowCasePage';
 
 const theme = createTheme({
   palette: {
@@ -21,6 +22,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<MainPage />}></Route>
+          <Route path='showcase' element={<ShowCasePage />}></Route>
           <Route path='cart' element={<Cart />}></Route>
         </Routes>
       </BrowserRouter>

@@ -24,6 +24,7 @@ export default function MyNavBar() {
           >
             Shop
           </Link>
+          <Button color='inherit' component={RouterLink} to={'/showcase'}>ShowCase</Button>
           <Button color='inherit' component={RouterLink} to={'/cart'}>Cart</Button>
         </Toolbar>
       </AppBar>
